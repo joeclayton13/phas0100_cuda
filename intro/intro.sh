@@ -19,7 +19,7 @@
 
 # Set the working directory to somewhere in your scratch space.
 # Replace "<your_UCL_id>" with your UCL user ID
-#$ -wd /home/<your_UCL_id>/phas0100/cuda/phas0100_cuda/intro/output
+#$ -wd /home/zczlrcl/phas0100/cuda/phas0100_cuda/intro/output
 
 # load the cuda module (as we are running a CUDA program)
 module unload compilers mpi

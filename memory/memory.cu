@@ -97,10 +97,10 @@ int main( )
 
   // Check and print the result
   int nCorrect = 0;
-  for (int i = 0; i < ARRAY_SIZE; i++) {
-    nCorrect += (hostOut[i] == hostIn[ARRAY_SIZE - (i+1)]) ? 1 : 0;
+  for (int i = 0; i < host_arraysize; i++) {
+    nCorrect += (hostOut[i] == hostIn[host_arraysize - (i+1)]) ? 1 : 0;
   }
-  std::cout << ((nCorrect == ARRAY_SIZE) ? "Success! " : "Failure: ");
+  std::cout << ((nCorrect == host_arraysize) ? "Success! " : "Failure: ");
   std::cout << nCorrect  << " elements were correctly swapped." << std::endl;
 
   // Free device memory

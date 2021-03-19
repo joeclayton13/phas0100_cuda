@@ -52,7 +52,7 @@ int main( )
   // HANDSON 2.2 Replace the host array size by a const int
   const int host_arraysize = 65536;
   // size of the array in char
-  size_t sizeChar = ARRAY_SIZE * sizeof(float);
+  size_t sizeChar = host_arraysize * sizeof(float);
 
   // Allocate host memory
   float* hostIn = (float*) malloc(sizeChar);

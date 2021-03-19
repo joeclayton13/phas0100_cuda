@@ -17,7 +17,8 @@ inline void cudaErrorCheck(cudaError_t err, const char* file, int line)
 
 // Array size
 // HANDSON 2.1 Change the array size to a static __constant__ int
-#define ARRAY_SIZE 65536
+//#define ARRAY_SIZE 65536
+static __constant__ int arraysize; 
 
 // CUDA threads per block
 #define nThreads 128
@@ -27,25 +28,29 @@ __global__
 void reverse(float* devA, float* devB)
 {
   // HANDSON 2.3 Create a __shared__ temporary array of length nThreads for the swap
-  
+  __shared__ float temp[nThreads];
+
   // Get the index in this block
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
   // HANDSON 2.4 Fill the temporary array
+  temp[nThreads - (threadIdx.x + 1)] = devA[idx];
 
   // HANDSON 2.5 synchronize the threads
+  __syncthreads(); 
 
   // HANDSON 2.6 Calculate the initial position of this block in the grid
-  // int blockOffset
-  // Reverse the elements
+  int blockOffset = arraysize - (blockIdx.x + 1) * blockDim.x
+
   // HANDSON 2.7 Fill the output array with the reversed elements from this block
-  devB[idx] = devA[ARRAY_SIZE - (idx + 1)];
+  devB[blockOffset + threadIdx.x] = temp[threadIdx.x]
 }
 
 // Main host function
 int main( )
 {
   // HANDSON 2.2 Replace the host array size by a const int
-  //             Here and elsewhere
+  const int host_arraysize = 65536;
   // size of the array in char
   size_t sizeChar = ARRAY_SIZE * sizeof(float);
 

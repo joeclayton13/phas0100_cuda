@@ -69,7 +69,7 @@ int main( )
 	      );
 
   // Initialize the arrays
-  for (int i = 0; i < ARRAY_SIZE; i++) {
+  for (int i = 0; i < host_arraysize; i++) {
     hostIn[i] = i;
     hostOut[i] = 0;
   }
@@ -80,7 +80,7 @@ int main( )
 	      );
 
   // Define the size of the task
-  dim3 blocksPerGrid(ARRAY_SIZE/nThreads);
+  dim3 blocksPerGrid(host_arraysize/nThreads);
   dim3 threadsPerBlock(nThreads);
 
   reverse<<<blocksPerGrid, threadsPerBlock>>>(devIn, devOut);

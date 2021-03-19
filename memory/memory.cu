@@ -40,10 +40,10 @@ void reverse(float* devA, float* devB)
   __syncthreads(); 
 
   // HANDSON 2.6 Calculate the initial position of this block in the grid
-  int blockOffset = arraysize - (blockIdx.x + 1) * blockDim.x
+  int blockOffset = arraysize - (blockIdx.x + 1) * blockDim.x;
 
   // HANDSON 2.7 Fill the output array with the reversed elements from this block
-  devB[blockOffset + threadIdx.x] = temp[threadIdx.x]
+  devB[blockOffset + threadIdx.x] = temp[threadIdx.x];
 }
 
 // Main host function

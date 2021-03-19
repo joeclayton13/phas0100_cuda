@@ -59,7 +59,7 @@ int main( )
   // HANDSON 1.1 Alocate the memory for the array on the device
   float* devArray; 
   myCudaCheck(
-        cudaMalloc(&devArray, sizeChar)
+        cudaMalloc(&devArray, sizeChar);
         );
 
   // Initialize the input array
